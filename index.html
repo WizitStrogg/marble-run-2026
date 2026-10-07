@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>2026 Marble Run Registration</title>
+<meta name="description" content="Register your team for the 2026 Marble Run: race day Saturday, December 19, 11 AM. Final team submissions due Saturday, December 5.">
+<meta property="og:title" content="2026 Marble Run Registration">
+<meta property="og:description" content="Name your team, pick your setup and design your two marbles.">
+<meta property="og:image" content="bg_poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: race footage loops full-bleed behind one frosted "entry form" column; the field of registered teams sits under it. Single dark look by choice (it sits on night-time footage). */
+:root{
+  --ink:#f4f1ff; --muted:#b9b3d6; --glass:rgba(17,14,34,.74); --glass-2:rgba(32,27,60,.82); --line:rgba(255,255,255,.14);
+  --gold:#ffcd5a; --gold-ink:#1b1430; --pink:#ff4fa3; --ok:#5fe0a0; --warn:#ffb067; --bg:#0d0b1c;
+  --display:"Bowlby One","Arial Black",Impact,system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.bgvid{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:saturate(1.1)}
+.shade{position:fixed;inset:0;z-index:0;background:linear-gradient(180deg,rgba(13,11,28,.55) 0%,rgba(13,11,28,.78) 45%,rgba(13,11,28,.92) 100%)}
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:grid;gap:22px}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.05}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,8.5vw,76px);letter-spacing:.5px;text-shadow:0 4px 0 rgba(0,0,0,.35)}
+h1 .yr{color:var(--gold)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,4vw,28px);letter-spacing:.4px}
+.dates{display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:600;color:var(--ink)}
+.dates span b{color:var(--gold)}
+.spots{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.pips{display:inline-flex;gap:4px}
+.pip{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.18)}
+.pip.on{background:var(--gold);box-shadow:0 0 8px rgba(255,205,90,.6)}
+.panel{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;gap:22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.step{display:grid;gap:14px}
+.stephead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.stepno{font-family:var(--mono);font-size:13px;color:var(--gold);letter-spacing:.1em}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+label.f{display:grid;gap:6px;font-weight:600;font-size:14px;color:var(--muted)}
+input[type=text]{font:500 17px var(--body);color:var(--ink);background:rgba(255,255,255,.06);border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;width:100%;box-sizing:border-box}
+input[type=text]:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,205,90,.25)}
+.stat{display:grid;grid-template-columns:96px 1fr;gap:6px 14px;align-items:center}
+.stat .nm{font-family:var(--display);font-size:18px}
+.stat .why{grid-column:2;color:var(--muted);font-size:14px;min-height:2.6em}
+.slider{display:grid;gap:4px;min-width:0}
+input[type=range]{width:100%;accent-color:var(--gold);height:28px}
+.ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.ticks span.on{color:var(--gold);font-weight:700}
+@media (max-width:560px){.stat{grid-template-columns:1fr}.stat .why{grid-column:1}}
+.marbles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:520px){.marbles{grid-template-columns:1fr}}
+.mcard{background:var(--glass-2);border:1px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:10px;min-width:0}
+.stage{width:100%;max-width:100%;aspect-ratio:1/1;display:block;border-radius:14px;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.10),rgba(0,0,0,0) 65%)}
+.mrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.chip{font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.chip.ok{color:var(--ok);border-color:rgba(95,224,160,.4)} .chip.warn{color:var(--warn);border-color:rgba(255,176,103,.4)}
+.btn{font:700 15px var(--body);border-radius:12px;padding:11px 16px;cursor:pointer;border:1.5px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink)}
+.btn.gold{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.btn.big{font-size:17px;padding:14px 22px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,input:focus-visible,.pat:focus-visible,.sw:focus-visible,label.up:focus-within{outline:3px solid var(--pink);outline-offset:2px}
+.savebar{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.msg{font-size:15px;color:var(--muted);min-width:0}
+.msg.ok{color:var(--ok)} .msg.err{color:var(--warn)}
+.note{font-size:13px;color:var(--muted);max-width:68ch}
+/* customiser sheet */
+.sheet{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:rgba(5,4,14,.72);padding:16px}
+.sheet .box{background:#1a1633;border:1px solid var(--line);border-radius:22px;width:min(860px,100%);max-height:100%;overflow:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px;padding:18px;box-sizing:border-box}
+@media (max-width:700px){.sheet{padding:0;place-items:stretch}.sheet .box{grid-template-columns:1fr;border-radius:0;height:100%;padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}}
+.ctl{display:grid;gap:16px;align-content:start;min-width:0}
+.ctl h3{font-family:var(--display);font-weight:400;font-size:22px}
+.grp{display:grid;gap:8px}
+.grp .lbl{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.swatches{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sw{width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;padding:0}
+.sw[aria-pressed="true"]{border-color:#fff;box-shadow:0 0 0 3px var(--gold)}
+input[type=color]{width:40px;height:34px;border:1.5px solid var(--line);border-radius:10px;background:transparent;padding:2px;cursor:pointer}
+.pats{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.pat{display:grid;gap:4px;justify-items:center;padding:8px 6px;border-radius:12px;border:1.5px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);font:600 13px var(--body);cursor:pointer}
+.pat canvas{width:64px;height:32px;border-radius:6px}
+.pat[aria-pressed="true"]{border-color:var(--gold);background:rgba(255,205,90,.12)}
+label.up{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:10px 14px;background:rgba(255,79,163,.18);border:1.5px solid rgba(255,79,163,.55);font-weight:700;cursor:pointer}
+label.up input{position:absolute;opacity:0;width:1px;height:1px}
+.sheetbar{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+/* field */
+.field{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.team{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;min-width:0}
+.team .th{display:flex;grid-row:span 2}
+.team .th canvas{width:38px;height:38px;border-radius:50%;margin-right:-8px;border:2px solid rgba(0,0,0,.4)}
+.team b{font-size:15px;overflow-wrap:anywhere}
+.team span{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.empty{color:var(--muted);font-size:15px}
+.host{border:1.5px dashed rgba(255,205,90,.5);border-radius:18px;padding:16px;display:grid;gap:12px;background:var(--glass)}
+.tbl{overflow-x:auto}
+.tbl table{border-collapse:collapse;font-size:14px;min-width:560px;width:100%}
+.tbl th,.tbl td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.tbl th{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:500}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+html,body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+.team .dots{display:flex;grid-row:span 2}
+.team .dots i{width:30px;height:30px;border-radius:50%;margin-right:-6px;border:2px solid rgba(0,0,0,.45);box-shadow:inset -4px -4px 0 rgba(0,0,0,.2)}
+.code{font-family:var(--mono);font-size:20px;letter-spacing:.2em;color:var(--gold);background:rgba(255,205,90,.1);border:1px dashed rgba(255,205,90,.5);border-radius:10px;padding:6px 12px}
+.done{display:grid;gap:10px;background:rgba(95,224,160,.08);border:1px solid rgba(95,224,160,.35);border-radius:16px;padding:14px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
+<body>
+<video class="bgvid" id="bgvid" src="bg_loop.mp4" poster="bg_poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+<div class="shade" aria-hidden="true"></div>
+
+<main class="wrap">
+  <header style="display:grid;gap:12px">
+    <div class="eyebrow">Marble Run Garage</div>
+    <h1><span class="yr">2026</span> Marble Run Registration</h1>
+    <div class="dates">
+      <span>Race day <b>Saturday, December 19 · 11 AM</b></span>
+      <span>Final team submissions due <b>Saturday, December 5</b></span>
+    </div>
+    <div class="spots"><span class="pips" id="pips" aria-hidden="true"></span><span id="spotsTxt">Loading teams…</span></div>
+  </header>
+
+  <form class="panel" id="form" novalidate>
+    <section class="step">
+      <div class="stephead"><span class="stepno">STEP 1</span><h2>Your team</h2></div>
+      <div class="fields">
+        <label class="f" for="name">Your name<input type="text" id="name" maxlength="40" autocomplete="name" placeholder="e.g. Josh"></label>
+        <label class="f" for="team">Team name<input type="text" id="team" maxlength="40" placeholder="e.g. The Rolling Thunder"></label>
+      </div>
+      <label class="hp" for="website">Leave this empty<input type="text" id="website" tabindex="-1" autocomplete="off"></label>
+    </section>
+
+    <section class="step">
+      <div class="stephead"><span class="stepno">STEP 2</span><h2>Race setup</h2></div>
+      <p class="note">Both of your marbles share this setup. Every choice has a trade-off on the course; there is no best setting.</p>
+      <div id="stats" style="display:grid;gap:16px"></div>
+    </section>
+
+    <section class="step">
+      <div class="stephead"><span class="stepno">STEP 3</span><h2>Your two marbles</h2></div>
+      <div class="marbles" id="marbles"></div>
+      <p class="note">Uploaded pictures are cropped to a square and wrapped around the marble. Use something you are happy for everyone at the party to see. JPG or PNG, up to 10 MB.</p>
+    </section>
+
+    <section class="step" id="editBox" hidden>
+      <label class="f" for="editCode">Edit code from your first submission<input type="text" id="editCode" maxlength="12" autocomplete="off" placeholder="e.g. K7Q2XM"></label>
+      <p class="note">This team name is already registered. Enter the edit code you were shown when you first submitted to update it, or choose a different team name.</p>
+    </section>
+
+    <div class="savebar">
+      <button class="btn gold big" id="saveBtn" type="submit">Submit registration</button>
+      <span class="msg" id="msg" role="status"></span>
+    </div>
+    <div class="done" id="doneBox" hidden>
+      <b>You're registered!</b>
+      <span>Keep this edit code. You'll need it to change your entry from another phone or computer before December 5.</span>
+      <span class="code" id="codeOut"></span>
+    </div>
+  </form>
+
+  <section style="display:grid;gap:12px">
+    <h2>Registered teams</h2>
+    <div class="field" id="field"><p class="empty">No teams yet. Be the first: fill in the form above and press Submit.</p></div>
+  </section>
+</main>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="box">
+    <canvas class="stage" id="sheetStage" aria-label="Marble preview"></canvas>
+    <div class="ctl">
+      <h3 id="sheetTitle">Marble A</h3>
+      <div class="grp"><span class="lbl">Main colour</span><div class="swatches" id="swBase"></div></div>
+      <div class="grp"><span class="lbl">Second colour</span><div class="swatches" id="swAccent"></div></div>
+      <div class="grp"><span class="lbl">Pattern</span><div class="pats" id="pats"></div></div>
+      <div class="grp"><span class="lbl">Your picture</span>
+        <div class="swatches"><label class="up" for="upload">Upload a picture<input type="file" id="upload" accept="image/jpeg,image/png"></label>
+        <button class="btn" type="button" id="clearImg" hidden>Remove picture</button></div>
+        <span class="note" id="imgNote">Optional. A picture replaces the pattern; your main colour stays on the top and bottom.</span>
+      </div>
+      <div class="sheetbar"><button class="btn" type="button" id="cancelBtn">Cancel</button><button class="btn gold" type="button" id="doneBtn">Save marble</button></div>
+    </div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>window.THREE || document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"><\/script>')</script>
+<script src="app.js"></script>
+</body>
+</html>
